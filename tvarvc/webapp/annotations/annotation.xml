@@ -1,0 +1,186 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/odatanosaml/sap/ZTVARVC_SRV/$metadata">
+        <edmx:Include Namespace="ZTVARVC_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="ZTVARVC_SRV.Parameter">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Name"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Type"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Type</PropertyPath>
+                        <PropertyPath>Name</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="T1">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Sign"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Opti"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>            
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Low"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>  
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="High"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>                                                                                      
+                    </Collection>
+                </Annotation>                  
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Parameter"/>
+                        <PropertyValue Property="TypeNamePlural" String="Parameters"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Name"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeImageUrl" String="REPLACE_WITH_TYPEIMAGE_PATH"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Documentation"/>
+                            <PropertyValue Property="ID" String="DOCU"/>
+                            <PropertyValue Property="Target" AnnotationPath="toDocument/@UI.LineItem" />
+                        </Record>  
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Parameters"/>
+                            <PropertyValue Property="ID" String="PARS"/>
+                            <PropertyValue Property="Target" AnnotationPath="toAll/@UI.LineItem#T1" />
+                        </Record>    
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Usage"/>
+                            <PropertyValue Property="ID" String="USAGE"/>
+                            <PropertyValue Property="Target" AnnotationPath="toUsage/@UI.LineItem" />
+                        </Record>                                                 
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZTVARVC_SRV.Document">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Documentation"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Docu"/>
+                        <PropertyValue Property="TypeNamePlural" String="Documentation"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Name"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeImageUrl" String="REPLACE_WITH_TYPEIMAGE_PATH"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="myDocufields">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Documentation">
+                                        <Annotation Term="UI.MultiLineText" Bool="true"/>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Docu">
+                            </PropertyValue>
+                            <PropertyValue Property="ID" String="doc"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#myDocufields"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+
+			<Annotations Target="ZTVARVC_SRV.Document/Documentation">
+				<Annotation Term="UI.MultiLineText" Bool="true"/>
+			</Annotations>
+
+
+            <Annotations Target="ZTVARVC_SRV.Usage">
+
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Object"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CodeLines"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>                        
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Usage"/>
+                        <PropertyValue Property="TypeNamePlural" String="Usages"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Name"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeImageUrl" String="REPLACE_WITH_TYPEIMAGE_PATH"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="usagedetails">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CodeLines"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Refresher"/>
+                                </Record>                                
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Source"/>
+                            <PropertyValue Property="ID" String="SRCID"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#usagedetails"/>
+                        </Record>
+                    </Collection>
+                </Annotation>                
+
+            </Annotations>
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

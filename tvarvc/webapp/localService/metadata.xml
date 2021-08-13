@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+           xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+           xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+           xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZTVARVC_SRV"
+		        xml:lang="en"
+		        sap:schema-version="1"
+		        xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Parameter"
+			            sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Name"/>
+					<PropertyRef Name="Type"/>
+					<PropertyRef Name="Numb"/>
+				</Key>
+				<Property Name="Mandt"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="3"
+				          sap:unicode="false"
+				          sap:label="Client ID"/>
+				<Property Name="Name"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="30"
+				          sap:unicode="false"
+				          sap:label="Variable Name"/>
+				<Property Name="Type"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="1"
+				          sap:unicode="false"
+				          sap:label="Selection cat."/>
+				<Property Name="Numb"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="4"
+				          sap:unicode="false"
+				          sap:label="Number"/>
+				<Property Name="Sign"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="1"
+				          sap:unicode="false"
+				          sap:label="INCL/EXCL"/>
+				<Property Name="Opti"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="2"
+				          sap:unicode="false"
+				          sap:label="Option"/>
+				<Property Name="Low"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="255"
+				          sap:unicode="false"
+				          sap:label="Field Value"/>
+				<Property Name="High"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="255"
+				          sap:unicode="false"
+				          sap:label="Field Value"/>
+				<Property Name="ClieIndep"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="1"
+				          sap:unicode="false"
+				          sap:label="CHAR01 data element for SYST"/>
+				<NavigationProperty Name="toAll"
+				                    Relationship="ZTVARVC_SRV.PAR_2_PAR"
+				                    FromRole="FromRole_PAR_2_PAR"
+				                    ToRole="ToRole_PAR_2_PAR"/>
+				<NavigationProperty Name="toDocument"
+				                    Relationship="ZTVARVC_SRV.PAR_2_DOC"
+				                    FromRole="FromRole_PAR_2_DOC"
+				                    ToRole="ToRole_PAR_2_DOC"/>
+				<NavigationProperty Name="toUsage"
+				                    Relationship="ZTVARVC_SRV.PAR_2_USAGE"
+				                    FromRole="FromRole_PAR_2_USAGE"
+				                    ToRole="ToRole_PAR_2_USAGE"/>
+			</EntityType>
+			<EntityType Name="Document"
+			            sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Name"/>
+					<PropertyRef Name="Type"/>
+				</Key>
+				<Property Name="Mandt"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="3"
+				          sap:unicode="false"
+				          sap:label="Client"/>
+				<Property Name="Name"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="30"
+				          sap:unicode="false"
+				          sap:label="Variable Name"/>
+				<Property Name="Type"
+				          Type="Edm.String"
+				          Nullable="false"
+				          MaxLength="1"
+				          sap:unicode="false"
+				          sap:label="Selection cat."/>
+				<Property Name="Documentation"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:label="XML"/>
+			</EntityType>
+			<EntityType Name="Usage"
+			            sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Name"/>
+					<PropertyRef Name="Type"/>
+					<PropertyRef Name="Object"/>
+				</Key>
+				<Property Name="Name"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:creatable="false"
+				          sap:updatable="false"
+				          sap:sortable="false"
+				          sap:filterable="false"/>
+				<Property Name="Type"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:creatable="false"
+				          sap:updatable="false"
+				          sap:sortable="false"
+				          sap:filterable="false"/>
+				<Property Name="Object"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:creatable="false"
+				          sap:updatable="false"
+				          sap:sortable="false"
+				          sap:filterable="false"/>
+				<Property Name="CodeLines"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:creatable="false"
+				          sap:updatable="false"
+				          sap:sortable="false"
+				          sap:filterable="false"/>
+				<Property Name="Refresher"
+				          Type="Edm.String"
+				          Nullable="false"
+				          sap:unicode="false"
+				          sap:creatable="false"
+				          sap:updatable="false"
+				          sap:sortable="false"
+				          sap:filterable="false"/>
+			</EntityType>
+			<Association Name="PAR_2_DOC"
+			             sap:content-version="1">
+				<End Type="ZTVARVC_SRV.Parameter"
+				     Multiplicity="1"
+				     Role="FromRole_PAR_2_DOC"/>
+				<End Type="ZTVARVC_SRV.Document"
+				     Multiplicity="*"
+				     Role="ToRole_PAR_2_DOC"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_PAR_2_DOC">
+						<PropertyRef Name="Numb"/>
+						<PropertyRef Name="Type"/>
+						<PropertyRef Name="Name"/>
+					</Principal>
+					<Dependent Role="ToRole_PAR_2_DOC">
+						<PropertyRef Name="Mandt"/>
+						<PropertyRef Name="Type"/>
+						<PropertyRef Name="Name"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="PAR_2_USAGE"
+			             sap:content-version="1">
+				<End Type="ZTVARVC_SRV.Parameter"
+				     Multiplicity="1"
+				     Role="FromRole_PAR_2_USAGE"/>
+				<End Type="ZTVARVC_SRV.Usage"
+				     Multiplicity="*"
+				     Role="ToRole_PAR_2_USAGE"/>
+			</Association>
+			<Association Name="PAR_2_PAR"
+			             sap:content-version="1">
+				<End Type="ZTVARVC_SRV.Parameter"
+				     Multiplicity="1"
+				     Role="FromRole_PAR_2_PAR"/>
+				<End Type="ZTVARVC_SRV.Parameter"
+				     Multiplicity="*"
+				     Role="ToRole_PAR_2_PAR"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_PAR_2_PAR">
+						<PropertyRef Name="Numb"/>
+						<PropertyRef Name="Type"/>
+						<PropertyRef Name="Name"/>
+					</Principal>
+					<Dependent Role="ToRole_PAR_2_PAR">
+						<PropertyRef Name="Numb"/>
+						<PropertyRef Name="Type"/>
+						<PropertyRef Name="Name"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZTVARVC_SRV_Entities"
+			                 m:IsDefaultEntityContainer="true"
+			                 sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Parameters"
+				           EntityType="ZTVARVC_SRV.Parameter"
+				           sap:creatable="false"
+				           sap:updatable="false"
+				           sap:deletable="false"
+				           sap:content-version="1"/>
+				<EntitySet Name="Documents"
+				           EntityType="ZTVARVC_SRV.Document"
+				           sap:content-version="1"/>
+				<EntitySet Name="Usages"
+				           EntityType="ZTVARVC_SRV.Usage"
+				           sap:creatable="false"
+				           sap:updatable="false"
+				           sap:deletable="false"
+				           sap:content-version="1"/>
+				<AssociationSet Name="PAR_2_DOCSet"
+				                Association="ZTVARVC_SRV.PAR_2_DOC"
+				                sap:creatable="false"
+				                sap:updatable="false"
+				                sap:deletable="false"
+				                sap:content-version="1">
+					<End EntitySet="Parameters"
+					     Role="FromRole_PAR_2_DOC"/>
+					<End EntitySet="Documents"
+					     Role="ToRole_PAR_2_DOC"/>
+				</AssociationSet>
+				<AssociationSet Name="PAR_2_PARSet"
+				                Association="ZTVARVC_SRV.PAR_2_PAR"
+				                sap:creatable="false"
+				                sap:updatable="false"
+				                sap:deletable="false"
+				                sap:content-version="1">
+					<End EntitySet="Parameters"
+					     Role="FromRole_PAR_2_PAR"/>
+					<End EntitySet="Parameters"
+					     Role="ToRole_PAR_2_PAR"/>
+				</AssociationSet>
+				<AssociationSet Name="PAR_2_USAGESet"
+				                Association="ZTVARVC_SRV.PAR_2_USAGE"
+				                sap:creatable="false"
+				                sap:updatable="false"
+				                sap:deletable="false"
+				                sap:content-version="1">
+					<End EntitySet="Parameters"
+					     Role="FromRole_PAR_2_USAGE"/>
+					<End EntitySet="Usages"
+					     Role="ToRole_PAR_2_USAGE"/>
+				</AssociationSet>
+			</EntityContainer>
+			<atom:link rel="self"
+			           href="http://sap-sr2-d01.zvgroup.lan:8000/sap/opu/odata/SAP/ZTVARVC_SRV/$metadata"
+			           xmlns:atom="http://www.w3.org/2005/Atom"/>
+			<atom:link rel="latest-version"
+			           href="http://sap-sr2-d01.zvgroup.lan:8000/sap/opu/odata/SAP/ZTVARVC_SRV/$metadata"
+			           xmlns:atom="http://www.w3.org/2005/Atom"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

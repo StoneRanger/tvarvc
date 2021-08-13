@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1628773950167_362_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "tvarvc",
+    "packageName": "",
+    "content": {
+        "property": "width",
+        "newValue": "50px"
+    },
+    "selector": {
+        "id": "tvarvc::sap.suite.ui.generic.template.ObjectPage.view.Details::Parameters--PARS::Table-Opti",
+        "idIsLocal": false,
+        "type": "sap.m.Column"
+    },
+    "layer": "VENDOR",
+    "texts": {},
+    "namespace": "apps/tvarvc/changes/",
+    "projectId": "tvarvc",
+    "creation": 1628773950167,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "latest",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "1.0.0",
+        "to": "1.0.0",
+        "creation": "1.0.0"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}
