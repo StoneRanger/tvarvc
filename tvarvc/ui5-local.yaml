@@ -1,11 +1,11 @@
-specVersion: '2.4'
+specVersion: "2.4"
 metadata:
-  name: 'tvarvc'
+  name: tvarvc
 type: application
 framework:
   name: SAPUI5
-  version: '1.92.2'
-  libraries: 
+  version: 1.92.2
+  libraries:
     - name: sap.m
     - name: sap.ushell
     - name: sap.ui.core
@@ -17,16 +17,24 @@ framework:
     - name: themelib_sap_fiori_3
 server:
   customMiddleware:
-  - name: fiori-tools-proxy
-    afterMiddleware: compression
-    configuration:
-      ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
-      backend:
-      - path: /sap
-        url: https://ewm-sr1-a01.zvgroup.lan:44300
-        client: 300
-  - name: fiori-tools-appreload
-    afterMiddleware: compression
-    configuration:
-     port: 35729
-     path: webapp
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: https://ewm-sr1-a01.zvgroup.lan:44300
+            client: 300
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+    - name: fiori-tools-servestatic
+      afterMiddleware: compression
+      configuration:
+        paths:
+          - path: /resources/zvdppack
+            src: c:\Users\udvanderste\projects\vdppackspecs\zvdppack\webapp
+          - path: /appconfig
+            src: c:\Users\udvanderste\projects\tvarvc\tvarvc\appconfig

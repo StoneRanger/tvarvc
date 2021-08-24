@@ -1,0 +1,14 @@
+{
+  "applications": {
+    "tvarvc-display": {
+      "additionalInformation": "SAPUI5.Component=tvarvc",
+      "applicationType": "URL",
+      "url": "../"
+    },
+    "packing-display": {
+      "additionalInformation": "SAPUI5.Component=zvdppack",
+      "applicationType": "URL",
+      "url": "../resources/zvdppack"
+    }
+  }
+}
