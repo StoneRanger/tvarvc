@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+# 1. npm run build
+# 2. import te dist in SAP via report /UI5/UI5_REPOSITORY_LOAD
+# 3. override the bootstrap src with https://sapui5.hana.ondemand.com/resources/sap-ui-core.js in the html
+specVersion: "2.4"
+metadata:
+  name: tvarvc
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        ignoreCertError: true
+        target:
+          url: https://sap-sr2-d01.zvgroup.lan:5200
+          client: "100"
+          auth: basic
+        credentials:
+          username: env:UI5USR
+          password: env:UI5PWD             
+        app:
+          name: ZTVARVC
+          description: Parameter Documentation
+          package: $TMP
+          transport: ""
