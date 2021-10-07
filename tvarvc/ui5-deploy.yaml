@@ -2,6 +2,8 @@
 # 1. npm run build
 # 2. import te dist in SAP via report /UI5/UI5_REPOSITORY_LOAD
 # 3. override the bootstrap src with https://sapui5.hana.ondemand.com/resources/sap-ui-core.js in the html
+# http://sap-sr2-d01.zvgroup.lan:8000/sap/bc/ui5_ui5/sap/ztvarvc/index.html?sap-client=300&sap-ui-language=NL&sap-ui-xx-devmode=true&saml2=disabled
+# #/Parameters(Name='ZCSM_OPTICS',Type='S',Numb='0000')
 specVersion: "2.4"
 metadata:
   name: tvarvc
